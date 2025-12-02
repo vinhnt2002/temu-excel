@@ -1,0 +1,6 @@
+version=1.2.3
+hasUpdate=true
+downloadUrl=https://drive.google.com/drive/folders/1ANeRm_g3bLI-j3JvEmlySj4-9fHfiD8U?usp=sharing
+changelog=🚀 Xóa sạch datamask từ hàng 5 trở xuống - File Excel nhẹ hơn đáng kể|🎨 Custom Color Dropdown với dark theme (#2d2d2d background)|🎨 Typography cải tiến - Labels sans-serif, Input serif|🐛 Fix 'Error: undefined' và 'Export error: [object Event]'|⚡ Bật compression và bookSST cho file Excel|🔧 Cải thiện error handling và stability|📊 File size display chính xác hơn với ArrayBuffer support|✅ Clone Excel theo size với format control hoàn hảo|✅ Báo dung lượng file Excel với cảnh báo màu đỏ khi gần 2MB|✅ Xóa URL hình ảnh sau khi ghi (giữ nguyên màu sắc)|✅ Hiển thị version trong UI|✅ Logic clone và mapping tối ưu|✅ Cải thiện hiệu suất và độ ổn định
+releaseDate=2025-09-13
+critical=false

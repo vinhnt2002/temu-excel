@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "hasUpdate": true,
+  "downloadUrl": "https://drive.google.com/drive/folders/1rGLgWNjcEwfUcwH2KzWfKVpcMmZv3onF",
+  "changelog": [
+    "✅ Sửa lỗi đọc header từ 4 hàng đầu tiên",
+    "✅ Cải thiện logic tìm cột size (HE)",
+    "✅ Tối ưu hóa clone Excel template",
+    "✅ Sửa lỗi 'No template row found for size'",
+    "✅ Thêm debug chi tiết cho sample rows",
+    "✅ Cải thiện so sánh size linh hoạt"
+  ],
+  "releaseDate": "2025-09-07",
+  "critical": false
+}

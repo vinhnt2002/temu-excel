@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Temu Tool - Hướng dẫn sử dụng</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        h2 {
+            color: #4a5568;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2d3748;
+            margin-top: 20px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .step {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .warning {
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
+            color: #742a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .success {
+            background: #c6f6d5;
+            border: 1px solid #9ae6b4;
+            color: #22543d;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            color: #718096;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logothumnail.png" alt="Dino Temu Tool Logo">
+        </div>
+        <h1>Dino Temu Tool - Hướng dẫn sử dụng</h1>
+        
+        <div class="highlight">
+            <h2>📋 Tổng quan</h2>
+            <p>Dino Temu Tool là một Chrome Extension giúp tự động hóa quá trình upload sản phẩm lên Temu. Tool hỗ trợ upload ảnh lên Cloudinary, resize ảnh theo chuẩn Temu, và ghi đè dữ liệu vào file Excel template. Khi hoàn thành, người dùng bấm "Export Excel" để xuất file và upload lên Temu qua phần "Add Product with Bulk".</p>
+        </div>
+
+        <h2>🚀 Cài đặt</h2>
+        
+        <h3>1. Tải Extension</h3>
+        <div class="step">
+            <ul>
+                <li>Tải file extension từ thư mục <code>extension/</code></li>
+                <li>Hoặc clone repository này</li>
+            </ul>
+        </div>
+
+        <h3>2. Cài đặt trong Chrome</h3>
+        <div class="step">
+            <ol>
+                <li>Mở Chrome và vào <code>chrome://extensions/</code></li>
+                <li>Bật "Developer mode" ở góc trên bên phải</li>
+                <li>Click "Load unpacked" và chọn thư mục <code>extension/</code></li>
+                <li>Extension sẽ xuất hiện với tên "Dino Temu Tool" và logo Dino</li>
+            </ol>
+        </div>
+
+        <h2>⚙️ Cấu hình</h2>
+        
+        <h3>1. Cloudinary Setup</h3>
+        <div class="step">
+            <ol>
+                <li>Đăng ký tài khoản tại <a href="https://cloudinary.com">Cloudinary</a></li>
+                <li>Lấy Cloudinary URL từ Dashboard:</li>
+                <div class="code">cloudinary://api_key:api_secret@cloud_name</div>
+                <li>Paste URL vào ô "Cloudinary URL" trong tool</li>
+            </ol>
+        </div>
+
+        <h3>2. Excel Template</h3>
+        <div class="step">
+            <ul>
+                <li>Chuẩn bị file Excel template với các cột cần thiết</li>
+                <li>Tool sẽ tự động detect các cột: Product Name, Description, Price, Color, Size, etc.</li>
+            </ul>
+        </div>
+
+        <h2>🎯 Cách sử dụng</h2>
+        
+        <div class="step">
+            <h3>Bước 1: Mở Tool</h3>
+            <ul>
+                <li>Click vào icon "Dino Temu Tool" trên Chrome toolbar</li>
+                <li>Cửa sổ tool sẽ mở ra</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Bước 2: Cấu hình Cloudinary</h3>
+            <ol>
+                <li>Paste Cloudinary URL vào ô "Cloudinary URL"</li>
+                <li>URL format: <code>cloudinary://api_key:api_secret@cloud_name</code></li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Bước 3: Upload Excel Template</h3>
+            <ol>
+                <li>Click "Choose File" và chọn file Excel (.xlsx, .xls, .csv)</li>
+                <li>Tool sẽ tự động đọc và hiển thị preview</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Bước 4: Nhập thông tin sản phẩm</h3>
+            <ul>
+                <li><strong>Title</strong>: Tên sản phẩm</li>
+                <li><strong>Description</strong>: Mô tả sản phẩm</li>
+                <li><strong>Price</strong>: Giá bán</li>
+                <li><strong>List Price</strong>: Giá niêm yết (optional)</li>
+                <li><strong>Color</strong>: Màu sắc sản phẩm</li>
+                <li><strong>Sizes</strong>: Chọn các size có sẵn (XS, S, M, L, XL, 2XL, 3XL)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Bước 5: Thêm ảnh sản phẩm</h3>
+            <ol>
+                <li>Nhập URL ảnh vào các ô "Image URL"</li>
+                <li>Chọn loại ảnh: "main" hoặc "alt"</li>
+                <li>Tool hỗ trợ tối đa 10 ảnh</li>
+                <li>Click "+ Add" để thêm ảnh mới</li>
+                <li>Click "- Remove" để xóa ảnh</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Bước 6: Ghi đè dữ liệu và xuất file</h3>
+            <ol>
+                <li>Click "Process & Export" để bắt đầu xử lý</li>
+                <li>Tool sẽ:
+                    <ul>
+                        <li>Upload ảnh lên Cloudinary</li>
+                        <li>Resize ảnh theo chuẩn Temu (1340x1785px - dọc)</li>
+                        <li><strong>Ghi đè dữ liệu vào file Excel template</strong> (không tạo file mới)</li>
+                        <li>Tiếp tục ghi đè cho đến khi người dùng bấm "Export Excel"</li>
+                    </ul>
+                </li>
+                <li><strong>Khi hoàn thành tất cả sản phẩm:</strong>
+                    <ul>
+                        <li>Bấm "Export Excel" để xuất file cuối cùng</li>
+                        <li>Upload file Excel này lên Temu qua phần "Add Product with Bulk"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h2>🔄 Workflow sử dụng</h2>
+        
+        <div class="highlight">
+            <h3>Quy trình hoàn chỉnh:</h3>
+            <ol>
+                <li><strong>Setup ban đầu:</strong> Cấu hình Cloudinary URL và upload Excel template</li>
+                <li><strong>Thêm sản phẩm:</strong> Nhập thông tin sản phẩm, chọn sizes, thêm ảnh</li>
+                <li><strong>Process & Export:</strong> Tool ghi đè dữ liệu vào Excel template (lặp lại cho nhiều sản phẩm)</li>
+                <li><strong>Export Excel:</strong> Khi hoàn thành tất cả sản phẩm, bấm "Export Excel"</li>
+                <li><strong>Upload lên Temu:</strong> Sử dụng file Excel đã xuất để upload qua "Add Product with Bulk"</li>
+            </ol>
+        </div>
+
+        <h2>🔧 Tính năng nâng cao</h2>
+        
+        <h3>1. Size Fallback</h3>
+        <div class="success">
+            <p>Nếu template không có size chính xác, tool sẽ tự động tìm size tương ứng:</p>
+            <ul>
+                <li>2XL → XXL → XL → L</li>
+                <li>3XL → XXXL → 2XL → XXL → XL</li>
+            </ul>
+        </div>
+
+        <h3>2. Auto Resize</h3>
+        <div class="success">
+            <ul>
+                <li>Tất cả ảnh sẽ được resize về 1340x1785px (dọc)</li>
+                <li>Giữ nguyên tỷ lệ và thêm padding trắng nếu cần</li>
+            </ul>
+        </div>
+
+        <h3>3. Form Persistence</h3>
+        <div class="success">
+            <ul>
+                <li>Tool tự động lưu form data</li>
+                <li>Không cần nhập lại khi reload</li>
+            </ul>
+        </div>
+
+        <h3>4. Update Notification</h3>
+        <div class="success">
+            <ul>
+                <li>Tool tự động kiểm tra bản cập nhật</li>
+                <li>Thông báo khi có version mới</li>
+            </ul>
+        </div>
+
+        <h2>📁 Cấu trúc file Excel</h2>
+        
+        <h3>Các cột bắt buộc:</h3>
+        <ul>
+            <li><strong>Product Name</strong>: Tên sản phẩm</li>
+            <li><strong>Description</strong>: Mô tả</li>
+            <li><strong>Base Price</strong>: Giá cơ bản</li>
+            <li><strong>List Price</strong>: Giá niêm yết</li>
+            <li><strong>Color</strong>: Màu sắc</li>
+            <li><strong>Size</strong>: Kích thước</li>
+            <li><strong>Shipping</strong>: Template vận chuyển</li>
+            <li><strong>Images</strong>: URL ảnh (main, alt1, alt2, ...)</li>
+        </ul>
+
+        <h3>Các cột tùy chọn:</h3>
+        <ul>
+            <li><strong>Contribution Goods</strong>: Đóng góp hàng hóa</li>
+            <li><strong>Contribution SKU</strong>: Đóng góp SKU</li>
+        </ul>
+
+        <h2>🐛 Troubleshooting</h2>
+        
+        <h3>Lỗi thường gặp:</h3>
+        
+        <div class="warning">
+            <h4>1. "XLSX is not defined"</h4>
+            <ul>
+                <li><strong>Nguyên nhân</strong>: XLSX library chưa load</li>
+                <li><strong>Giải pháp</strong>: Đợi vài giây rồi thử lại</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4>2. "No template row found for size"</h4>
+            <ul>
+                <li><strong>Nguyên nhân</strong>: Template không có size tương ứng</li>
+                <li><strong>Giải pháp</strong>: Tool sẽ tự động tìm size gần nhất</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4>3. "Upload failed"</h4>
+            <ul>
+                <li><strong>Nguyên nhân</strong>: Cloudinary URL sai hoặc hết quota</li>
+                <li><strong>Giải pháp</strong>: Kiểm tra lại Cloudinary URL</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4>4. "At least one image URL is required"</h4>
+            <ul>
+                <li><strong>Nguyên nhân</strong>: Chưa nhập ảnh nào</li>
+                <li><strong>Giải pháp</strong>: Thêm ít nhất 1 URL ảnh</li>
+            </ul>
+        </div>
+
+        <h3>Debug Mode:</h3>
+        <div class="step">
+            <ul>
+                <li>Mở Developer Tools (F12)</li>
+                <li>Xem console để debug</li>
+                <li>Tool có logging chi tiết</li>
+            </ul>
+        </div>
+
+        <h2>📞 Hỗ trợ</h2>
+        
+        <h3>Liên hệ:</h3>
+        <ul>
+            <li><strong>Email</strong>: Lechitrung97@gmail.com</li>
+            <li><strong>Telegram</strong>: @trunglee0611</li>
+        </ul>
+
+        <h3>Báo lỗi:</h3>
+        <ul>
+            <li>Mô tả chi tiết lỗi</li>
+            <li>Screenshot nếu có</li>
+            <li>Steps to reproduce</li>
+        </ul>
+
+        <h2>🔄 Cập nhật</h2>
+        
+        <h3>Kiểm tra bản cập nhật:</h3>
+        <ul>
+            <li>Tool tự động kiểm tra mỗi 24h</li>
+            <li>Thông báo khi có version mới</li>
+            <li>Download từ Google Drive</li>
+        </ul>
+
+        <h3>Changelog:</h3>
+        <ul>
+            <li><strong>v1.1.0</strong>: Thêm size fallback, cải thiện UI</li>
+            <li><strong>v1.0.0</strong>: Phiên bản đầu tiên</li>
+        </ul>
+
+        <h2>☁️ Hướng dẫn đăng ký Cloudinary</h2>
+        
+        <div class="highlight">
+            <h3>📋 Tổng quan Cloudinary</h3>
+            <p>Cloudinary là dịch vụ lưu trữ và xử lý ảnh trên cloud. Dino Temu Tool sử dụng Cloudinary để upload và resize ảnh sản phẩm. Hướng dẫn này sẽ giúp bạn đăng ký tài khoản Cloudinary miễn phí và lấy API key để sử dụng với tool.</p>
+        </div>
+
+        <h3>🚀 Bước 1: Truy cập Cloudinary</h3>
+        
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">1</div>
+                <div>
+                    <h4>Mở trình duyệt web</h4>
+                    <p>Mở Chrome, Firefox, Safari hoặc trình duyệt bất kỳ trên máy tính của bạn.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">2</div>
+                <div>
+                    <h4>Truy cập trang đăng ký</h4>
+                    <p>Gõ địa chỉ sau vào thanh địa chỉ và nhấn Enter:</p>
+                    <div class="code">https://cloudinary.com/signup</div>
+                    <p>Hoặc click vào link: <a href="https://cloudinary.com/signup" target="_blank">https://cloudinary.com/signup</a></p>
+                </div>
+            </div>
+        </div>
+
+        <h3>📝 Bước 2: Đăng ký tài khoản</h3>
+        
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">1</div>
+                <div>
+                    <h4>Điền thông tin đăng ký</h4>
+                    <p>Trên trang đăng ký, bạn sẽ thấy form với các trường sau:</p>
+                    <ul>
+                        <li><strong>Email:</strong> Nhập địa chỉ Gmail của bạn (ví dụ: yourname@gmail.com)</li>
+                        <li><strong>Password:</strong> Tạo mật khẩu mạnh (ít nhất 8 ký tự)</li>
+                        <li><strong>Confirm Password:</strong> Nhập lại mật khẩu</li>
+                        <li><strong>Full Name:</strong> Họ và tên đầy đủ của bạn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">2</div>
+                <div>
+                    <h4>Chọn gói miễn phí</h4>
+                    <p>Cloudinary có gói miễn phí rất hào phóng:</p>
+                    <ul>
+                        <li>✅ 25GB dung lượng lưu trữ</li>
+                        <li>✅ 25GB băng thông/tháng</li>
+                        <li>✅ 25,000 lượt transform/tháng</li>
+                        <li>✅ Không giới hạn số lượng ảnh</li>
+                    </ul>
+                    <p>Chọn gói <strong>"Free"</strong> để bắt đầu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">3</div>
+                <div>
+                    <h4>Xác thực email</h4>
+                    <p>Sau khi điền form, Cloudinary sẽ gửi email xác thực đến Gmail của bạn:</p>
+                    <ol>
+                        <li>Kiểm tra hộp thư Gmail</li>
+                        <li>Tìm email từ Cloudinary (có thể ở thư mục Spam)</li>
+                        <li>Click vào link "Verify your email" trong email</li>
+                        <li>Trang web sẽ chuyển hướng và xác nhận tài khoản</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h3>🔑 Bước 3: Lấy API Key</h3>
+        
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">1</div>
+                <div>
+                    <h4>Đăng nhập vào Dashboard</h4>
+                    <p>Sau khi xác thực email, đăng nhập vào Cloudinary:</p>
+                    <ol>
+                        <li>Truy cập: <a href="https://cloudinary.com/console" target="_blank">https://cloudinary.com/console</a></li>
+                        <li>Nhập email và mật khẩu đã đăng ký</li>
+                        <li>Click "Log In"</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">2</div>
+                <div>
+                    <h4>Tìm thông tin API</h4>
+                    <p>Trên Dashboard, bạn sẽ thấy thông tin API ở góc trên bên phải:</p>
+                    <ul>
+                        <li><strong>Cloud Name:</strong> Tên cloud của bạn (ví dụ: dino-temu-tool)</li>
+                        <li><strong>API Key:</strong> Mã API (dãy số dài)</li>
+                        <li><strong>API Secret:</strong> Mã bí mật (dãy số và chữ cái)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="success">
+            <h4>🔐 Thông tin API quan trọng</h4>
+            <p><strong>Lưu ý:</strong> API Secret rất quan trọng, không chia sẻ với ai khác!</p>
+            <div class="code">
+                Cloud Name: your-cloud-name<br>
+                API Key: 123456789012345<br>
+                API Secret: abcdefghijklmnopqrstuvwxyz1234567890abcd
+            </div>
+        </div>
+
+        <h3>🔗 Bước 4: Tạo Cloudinary URL</h3>
+        
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">1</div>
+                <div>
+                    <h4>Format URL chuẩn</h4>
+                    <p>Cloudinary URL có format như sau:</p>
+                    <div class="code">cloudinary://api_key:api_secret@cloud_name</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">2</div>
+                <div>
+                    <h4>Ví dụ thực tế</h4>
+                    <p>Thay thế thông tin thực của bạn:</p>
+                    <div class="code">cloudinary://123456789012345:abcdefghijklmnopqrstuvwxyz1234567890abcd@dino-temu-tool</div>
+                    <p><strong>Trong đó:</strong></p>
+                    <ul>
+                        <li><code>123456789012345</code> = API Key của bạn</li>
+                        <li><code>abcdefghijklmnopqrstuvwxyz1234567890abcd</code> = API Secret của bạn</li>
+                        <li><code>dino-temu-tool</code> = Cloud Name của bạn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>✅ Bước 5: Sử dụng với Dino Temu Tool</h3>
+        
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">1</div>
+                <div>
+                    <h4>Copy Cloudinary URL</h4>
+                    <p>Copy toàn bộ Cloudinary URL vừa tạo (bao gồm cả <code>cloudinary://</code>)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div style="display: flex; align-items: flex-start; margin: 15px 0;">
+                <div style="background: #667eea; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px;">2</div>
+                <div>
+                    <h4>Paste vào Dino Temu Tool</h4>
+                    <p>Mở Dino Temu Tool và paste URL vào ô "Cloudinary URL":</p>
+                    <ol>
+                        <li>Click icon Dino Temu Tool trên Chrome</li>
+                        <li>Paste Cloudinary URL vào ô "Cloudinary URL"</li>
+                        <li>Tool sẽ tự động xác thực kết nối</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h3>🔧 Troubleshooting Cloudinary</h3>
+        
+        <div class="warning">
+            <h4>❌ Lỗi thường gặp</h4>
+            <h5>1. "Invalid Cloudinary URL"</h5>
+            <ul>
+                <li><strong>Nguyên nhân:</strong> URL không đúng format</li>
+                <li><strong>Giải pháp:</strong> Kiểm tra lại format: <code>cloudinary://api_key:api_secret@cloud_name</code></li>
+            </ul>
+            
+            <h5>2. "Authentication failed"</h5>
+            <ul>
+                <li><strong>Nguyên nhân:</strong> API Key hoặc API Secret sai</li>
+                <li><strong>Giải pháp:</strong> Copy lại thông tin từ Cloudinary Dashboard</li>
+            </ul>
+            
+            <h5>3. "Upload failed"</h5>
+            <ul>
+                <li><strong>Nguyên nhân:</strong> Hết quota hoặc lỗi mạng</li>
+                <li><strong>Giải pháp:</strong> Kiểm tra kết nối internet và quota Cloudinary</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h4>✅ Kiểm tra kết nối thành công</h4>
+            <p>Khi Cloudinary URL đúng, bạn sẽ thấy:</p>
+            <ul>
+                <li>Tool hiển thị "Cloudinary connected successfully"</li>
+                <li>Có thể upload ảnh lên Cloudinary</li>
+                <li>Ảnh được resize theo chuẩn Temu (1340x1785px)</li>
+            </ul>
+        </div>
+
+        <h3>💡 Tips & Tricks Cloudinary</h3>
+        
+        <div class="info">
+            <h4>💡 Mẹo sử dụng hiệu quả</h4>
+            <ul>
+                <li><strong>Lưu Cloudinary URL:</strong> Lưu URL vào file text để dùng lại</li>
+                <li><strong>Kiểm tra quota:</strong> Vào Cloudinary Dashboard để xem dung lượng còn lại</li>
+                <li><strong>Backup API:</strong> Lưu API Key và Secret ở nơi an toàn</li>
+                <li><strong>Test trước:</strong> Upload 1-2 ảnh test trước khi sử dụng hàng loạt</li>
+            </ul>
+        </div>
+
+        <h3>📊 Gói miễn phí Cloudinary</h3>
+        
+        <div class="step">
+            <h4>Giới hạn gói Free:</h4>
+            <ul>
+                <li>✅ <strong>25GB</strong> dung lượng lưu trữ</li>
+                <li>✅ <strong>25GB</strong> băng thông/tháng</li>
+                <li>✅ <strong>25,000</strong> lượt transform/tháng</li>
+                <li>✅ <strong>Không giới hạn</strong> số lượng ảnh</li>
+                <li>✅ <strong>Không giới hạn</strong> thời gian sử dụng</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h4>📈 Khi nào cần nâng cấp?</h4>
+            <p>Chỉ cần nâng cấp khi:</p>
+            <ul>
+                <li>Vượt quá 25GB dung lượng lưu trữ</li>
+                <li>Vượt quá 25GB băng thông/tháng</li>
+                <li>Cần transform ảnh nhiều hơn 25,000 lần/tháng</li>
+            </ul>
+            <p>Với gói Free, bạn có thể upload hàng nghìn ảnh sản phẩm mà không lo hết quota!</p>
+        </div>
+
+        <div class="footer">
+            <h2>📄 License</h2>
+            <p>MIT License - Xem file LICENSE để biết thêm chi tiết.</p>
+            
+            <hr>
+            <div class="logo">
+                <img src="logothumnail.png" alt="Dino Temu Tool Logo">
+            </div>
+            <h2>Dino Temu Tool</h2>
+            <p><strong>Tự động hóa quá trình upload sản phẩm Temu một cách dễ dàng!</strong> ✨</p>
+        </div>
+    </div>
+</body>
+</html>

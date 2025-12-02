@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Dino Temu Tool - Window</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Dino Temu Tool</h2>
+
+    <!-- Cloudinary -->
+    <div class="form-group">
+      <label>Cloudinary URL</label>
+      <input id="cloudinaryUrl" placeholder="cloudinary://api_key:api_secret@cloud_name" />
+    </div>
+
+    <!-- Excel Template -->
+    <div class="form-group">
+      <label>Excel Template</label>
+      <input id="excelFile" type="file" accept=".csv,.xlsx,.xls" />
+    </div>
+
+    <!-- Product Info -->
+    <div class="form-group">
+      <label>Title</label>
+      <input id="title" />
+      
+      <label>Description</label>
+      <textarea id="description" rows="2"></textarea>
+      
+      <div class="price-row">
+        <div>
+          <label>Price</label>
+          <input id="price" type="number" step="0.01" />
+        </div>
+        <div>
+          <label>List Price</label>
+          <input id="listPrice" type="number" step="0.01" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes -->
+    <div class="form-group">
+      <label>Sizes</label>
+      <div class="sizes">
+        <label><input type="checkbox" value="XS" class="size" /> XS</label>
+        <label><input type="checkbox" value="S" class="size" /> S</label>
+        <label><input type="checkbox" value="M" class="size" /> M</label>
+        <label><input type="checkbox" value="L" class="size" /> L</label>
+        <label><input type="checkbox" value="XL" class="size" /> XL</label>
+        <label><input type="checkbox" value="2XL" class="size" /> 2XL</label>
+        <label><input type="checkbox" value="3XL" class="size" /> 3XL</label>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="form-group">
+      <label>Colors</label>
+      <div class="color-input-row">
+        <input id="colorInput" list="colorList" placeholder="Type color name..." />
+        <button id="addColorBtn">Add</button>
+      </div>
+      <datalist id="colorList"></datalist>
+      <div id="colorTabs" class="color-tabs"></div>
+    </div>
+
+    <!-- Images for Selected Color -->
+    <div class="form-group" id="colorImagesSection" style="display:none;">
+      <div class="color-images-header">
+        <label>Images for: <span id="activeColorName" class="active-color-badge">-</span></label>
+        <span class="image-count-badge" id="imageCountBadge">0/4</span>
+      </div>
+      <div id="colorImagesContainer" class="color-images-compact"></div>
+      <div class="image-controls-compact">
+        <button id="addImageBtn" class="btn-sm btn-add">+ Thêm ảnh</button>
+        <button id="removeImageBtn" class="btn-sm btn-remove">- Xóa ảnh</button>
+      </div>
+    </div>
+
+    <!-- Shipping -->
+    <div class="form-group">
+      <label>Shipping Template</label>
+      <input id="shippingTemplate" placeholder="Template name" />
+    </div>
+
+    <!-- Actions -->
+    <div class="form-group">
+      <div class="actions">
+        <button id="writeBtn" class="btn-primary">Ghi vào Excel</button>
+        <button id="exportBtn" class="btn-secondary">Xuất File</button>
+      </div>
+    </div>
+
+    <div id="status" class="status"></div>
+    <div id="productCounter" class="product-counter">Đã ghi: 0 sản phẩm</div>
+    <div id="versionDisplay" class="version-info"></div>
+  </div>
+
+  <script src="xlsx.full.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

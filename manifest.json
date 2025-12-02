@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Dino Temu Tool",
+  "version": "1.2.3",
+  "description": "Upload product images to Cloudinary, resize and export product data to Excel/CSV.",
+  "action": {
+    "default_icon": {
+      "16": "logothumnail.png",
+      "32": "logothumnail.png",
+      "48": "logothumnail.png",
+      "128": "logothumnail.png"
+    }
+  },
+  "icons": {
+    "16": "logothumnail.png",
+    "32": "logothumnail.png",
+    "48": "logothumnail.png",
+    "128": "logothumnail.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "downloads",
+    "windows",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "temu_colors (1).txt",
+        "temu_color.txt",
+        "update-info.json",
+        "update-info.txt"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

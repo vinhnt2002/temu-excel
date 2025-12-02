@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e:*)",
+      "Bash(dir:*)",
+      "Bash(powershell -Command \"Get-ChildItem -Path ''d:\\bohubo\\temu\\extension v1.2.3 - ngkn update\\extension v1.2.3 - ngkn update\\'' -Filter ''*.xlsx'' | Select-Object Name, Length\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
